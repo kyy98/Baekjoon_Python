@@ -3,6 +3,6 @@ for i in range(10):
     a = input()
     lst.append(int(a))
 
-b = list(map(lambda x: x % 42, lst))
+b = [i % 42 for i in lst]
 c = set(b)
 print(len(c))
