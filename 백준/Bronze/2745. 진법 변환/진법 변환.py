@@ -1,16 +1,10 @@
 a, b = input().split()
 b = int(b)
-lst = []
-alpha_list = list("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-num_list = [i for i in range(36)]
+a = list(a)[::-1]
 
-   
-for k in a:
-    i = alpha_list.index(k)
-    j = num_list[i]
-    lst.append(j)
-lst = lst[::-1]
+alpha_list = list("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
 sum = 0
-for i in range(len(lst))[::-1]:
-    sum+=lst[i]*(b**i)
+for i in range(len(a))[::-1]:
+    sum+=alpha_list.index(a[i])*(b**i)
 print(sum)
