@@ -1,15 +1,10 @@
 N = int(input())
-lst_1 = list(map(int, input().split()))
+set_1 = set(map(int, input().split()))
 M = int(input())
-lst_2 = list(map(int, input().split()))
-dic = {}
+lst = list(map(int, input().split()))
 
-for i in lst_2:
-    dic[i] = 0
-
-for j in lst_1:
-    if j in dic:
-        dic[j] = 1
-
-for i in dic:
-    print(dic[i], end=' ')
+for i in lst:
+    if i in set_1:
+        print(1, end=' ')
+    else:
+        print(0, end=' ')
