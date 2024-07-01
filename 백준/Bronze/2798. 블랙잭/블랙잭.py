@@ -1,13 +1,17 @@
-N, M = map(int, input().split())
+a, M = map(int, input().split())
 
-lst_2 = []
 lst = list(map(int, input().split()))
 
-for i in range(N):
-    for j in range(i+1, N):
-        for k in range(j+1, N):
+lst_2 = []
+for i in range(len(lst)-1):
+    for j in range(i+1, len(lst)):
+        for k in range(j+1, len(lst)):
             sum = lst[i]+lst[j]+lst[k]
-            if sum <= M:
+            if sum > M:
+                continue
+            else:
                 lst_2.append(sum)
+            
+
 
 print(max(lst_2))
