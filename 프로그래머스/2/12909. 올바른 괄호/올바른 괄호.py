@@ -1,6 +1,34 @@
 s = '()()'
 
-# def solution(s):
+def solution(s):
+    ls = []
+    for i in s:
+        if i == '(':
+            ls.append(i)
+        else:
+            if ls != []:
+                ls.pop(0)
+
+    if ls != []:
+        return True
+    return False
+solution(s)           
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 #     ls = []
 #     for i in s:
 #         if i == '(':
