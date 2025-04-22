@@ -5,9 +5,7 @@ def solution(sizes):
     ls_2 = []
     for i in sizes:
         if i[0] < i[1]:
-            temp = i[0]
-            i[0] = i[1]
-            i[1] = temp
+            i[0], i[1] = i[1], i[0]
     for i in sizes:
         ls_1.append(i[0])
         ls_2.append(i[1])
