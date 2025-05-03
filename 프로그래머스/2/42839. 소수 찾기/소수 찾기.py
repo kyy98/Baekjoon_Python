@@ -1,6 +1,5 @@
 from itertools import permutations
 import math
-numbers = "17"
 
 def sosu(n):
     if n < 2:
@@ -12,20 +11,16 @@ def sosu(n):
         return True
 
 def solution(numbers):
-    answer = 0
-    p = []
-    result = []
     cnt = 0
-    
+    p = []
     for i in range(1, len(numbers)+1):
         p.extend(permutations(numbers, i))
-        result = [''.join(k) for k in p]
-        result = list(set([int(k) for k in result]))
-    for j in result:
-        if sosu(j):
+    perm = list(int(''.join(k)) for k in p)
+    for i in set(perm):
+        if sosu(i):
             cnt+=1
     return cnt
-        
-solution(numbers)
+            
+
     
         
