@@ -1,20 +1,28 @@
 def solution(n, computers):
-    def bfs(i):
-        q=[]
-        q.append(i)
-        visited[i] = True
+    def bfs(s):
+        q = []
+        q.append(s)
+        v[s] = 1
+        
         while q:
             c = q.pop(0)
-            for j in range(n):
-                if not visited[j] and computers[j][c]:
-                    q.append(j)
-                    visited[j] = True    
+            for i in range(n):
+                if computers[c][i] == 1 and not v[i]:
+                    q.append(i)
+                    v[i] = 1
     
-    visited = [False] * n
-    cnt = 0       
+    
+    v = [0]*n
+    cnt = 0
     for i in range(n):
-        if not visited[i]:
+        if not v[i]:
             bfs(i)
-            cnt += 1
-        
+            cnt+=1
     return cnt
+    
+        
+                
+
+            
+
+    
