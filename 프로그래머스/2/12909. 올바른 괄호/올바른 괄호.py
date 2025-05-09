@@ -1,4 +1,4 @@
-s = '()()'
+
 
 def solution(s):
     ls = []
@@ -6,50 +6,9 @@ def solution(s):
         if i == '(':
             ls.append(i)
         else:
-            if ls != []:
-                ls.pop(0)
-
-    if ls != []:
-        return True
-    return False
-solution(s)           
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-#     ls = []
-#     for i in s:
-#         if i == '(':
-#             ls.append(i)
-#         else:
-#             if ls == []:
-#                 return False
-#             else:
-#                 ls.pop(0)
-#     if ls != []:
-#         return False
-#     return True
-#     solution(s)
-
-def solution(s):
-    stack = []
-    for i in s:
-        if i == '(':
-            stack.append(i)
-        else:
-            if not stack:
+            if ls == []:     # 스택이 비어 있으면 닫는 괄호가 많다는 뜻
                 return False
-            stack.pop()
-    return not stack
+            ls.pop()         # 마지막 여는 괄호 제거 (pop(0) ❌ pop() ✅)
+    if ls != []:             # 여는 괄호가 남아 있음 → 짝이 안 맞음
+        return False
+    return True
