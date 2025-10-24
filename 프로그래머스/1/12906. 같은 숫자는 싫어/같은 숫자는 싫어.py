@@ -1,4 +1,4 @@
-arr = [1,1,3,3,0,1,1]
+
 def solution(arr):
     ls = [arr[0]]
     for i in range(1, len(arr)):
@@ -8,8 +8,9 @@ def solution(arr):
         else:
             ls.append(arr[i])
     return ls
-solution(arr)
-        
+   
+
+
         
         
         
