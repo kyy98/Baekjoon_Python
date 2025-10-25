@@ -1,65 +1,27 @@
-# from itertools import permutations
-# import math
-
-# def sosu(n):
-#     if n < 2:
-#         return False
-#     else:
-#         for i in range(2, int(math.sqrt(n)+1)):
-#             if n % i == 0:
-#                 return False
-#         return True
-
-# def solution(numbers):
-#     cnt = 0
-#     p = []
-#     for i in range(1, len(numbers)+1):
-#         p.extend(permutations(numbers, i))
-#     perm = list(int(''.join(k)) for k in p)
-#     for i in set(perm):
-#         if sosu(i):
-#             cnt+=1
-#     return cnt
-            
 from itertools import permutations
-import math
 
-def sosu(n):
-    if n < 2:
-        return False
-    else:
-        for i in range(2, int(math.sqrt(n)+1)):
-            if n % i == 0:
-                return False
-        return True
-
-
+ls_1 = []
+ls_2 = []
 def solution(numbers):
-    ls = []
-    for i in range(1, len(numbers)+1):
-        ls.extend(permutations(numbers, i))    # permutations 결과 list에 넣어줘야 함
+    for n in numbers:
+        ls_1.append(n)
+    for i in range(1, len(ls_1)+1):
+        for p in permutations(ls_1, i):
+            num = ''.join(p)
+            ls_2.append(num)
+    ls_3 = list(set(ls_2))
+    ls_3 = [num for num in ls_3 if num[0] != '0' and num != '1']
     
-    for i in range(len(ls)):
-        ls[i] = int(''.join(ls[i]))
-    
-    
-    cnt = 0
-    ls = list(set(ls))
-    for i in ls:
-        if sosu(i):
-            cnt+=1
-    return cnt
+    sosu = []
+
+    for num in ls_3:
+        if all(int(num) % i != 0 for i in range(2, int(num))):
+            sosu.append(num)
+                  
+    return len(sosu)
+            
+            
+            
+            
         
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
