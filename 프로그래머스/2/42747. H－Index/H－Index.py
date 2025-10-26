@@ -1,20 +1,6 @@
-citations = [3, 0, 6, 1, 5]
-
 def solution(citations):
-    cit = sorted(citations, reverse=True)
-    for i in range(len(cit)):
-        if cit[i] < i+1:
+    citations.sort(reverse=True)
+    for i, c in enumerate(citations):
+        if c <= i:
             return i
-            
     return len(citations)
-solution(citations)            
-            
-
-
-            
-        
-            
-            
-            
-            
-        
