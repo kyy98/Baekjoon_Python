@@ -7,11 +7,10 @@ def solution(n, computers):
         while q:
             c = q.pop(0)
             for i in range(n):
-                if computers[c][i] == 1 and not v[i]:
+                if not v[i] and computers[c][i] == 1:
                     q.append(i)
                     v[i] = 1
-    
-    
+                    
     v = [0]*n
     cnt = 0
     for i in range(n):
@@ -19,10 +18,4 @@ def solution(n, computers):
             bfs(i)
             cnt+=1
     return cnt
-    
-        
-                
-
-            
-
-    
+                    
