@@ -1,10 +1,12 @@
 N = int(input())
-set_1 = set(map(int, input().split()))
+ls_1 = set(map(int, input().split()))
 M = int(input())
-lst = list(map(int, input().split()))
+ls_2 = list(map(int, input().split()))
 
-for i in lst:
-    if i in set_1:
-        print(1, end=' ')
+for i in range(M):
+    if ls_2[i] in ls_1:
+        ls_2[i] = 1
     else:
-        print(0, end=' ')
+        ls_2[i] = 0
+for j in ls_2:
+      print(j, end=' ')
