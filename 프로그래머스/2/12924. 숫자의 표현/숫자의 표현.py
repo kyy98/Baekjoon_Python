@@ -6,11 +6,8 @@ def solution(n):
             s+=j
             if s == n:
                 cnt+=1
+            elif s > n:
                 break
-            if s > n:
-                break
-            
-            
     return cnt
                 
             
