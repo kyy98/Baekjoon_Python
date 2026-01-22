@@ -1,26 +1,16 @@
-# def solution(people, limit):
-#     answer = 0
-#     while len(people) > 1:
-#         for i in people:
-#             c = people.pop(0)
-#             if c+i <= limit:
-#                 people.remove(i)
-#                 answer+=1
-#             else:
-#                 answer+=1
-#     return answer
-
+# 투포인터
 def solution(people, limit):
-    people.sort()  # 가장 가벼운 사람부터 정렬
-    left = 0
-    right = len(people) - 1
-    answer = 0
+    people.sort()
+    cnt = 0
+    start = 0
+    end = len(people)-1
+    
+    while start <= end:
+        if people[start]+people[end] <= limit:
+            start+=1
+        
+        cnt+=1
+        end-=1
 
-    while left <= right:
-        if people[left]+people[right] <= limit:
-            left+=1
-        right-=1
-        answer+=1
-
-    return answer
-
+    return cnt
+        
