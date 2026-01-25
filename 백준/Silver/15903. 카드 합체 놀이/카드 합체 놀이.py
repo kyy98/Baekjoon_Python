@@ -1,13 +1,10 @@
-import heapq
-n, m = map(int, input().split())
-heap = list(map(int, input().split()))
+a,b = map(int, input().split())
+card  = list(map(int,input().split()))
 
-for _ in range(m):
-    heapq.heapify(heap)
-    a = heapq.heappop(heap)
-    b = heapq.heappop(heap)
-    num = a+b
-    heapq.heappush(heap, num)
-    heapq.heappush(heap, num)
+for i in range(b):
+    card = sorted(card)
+    cover = card[0] + card[1]
+    card[0] = cover
+    card[1] = cover
 
-print(sum(heap))
+print(sum(card))
