@@ -1,12 +1,13 @@
-N = int(input())
-cnt = N
-for i in range(N):
-    w = input()
-    for j in range(len(w)-1):
-        if w[j] == w[j+1]:
-            pass
-        if w[j] != w[j+1] and w[j] in w[j+2:]:
+n = int(input())
+cnt = n
+
+for _ in range(n):
+    word = input()
+    ls = [word[0]]
+    for s in word[1:]:
+        if (ls[-1] != s) and (s in ls):
             cnt-=1
             break
+        ls.append(s)
 
 print(cnt)
