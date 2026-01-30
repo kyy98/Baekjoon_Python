@@ -3,12 +3,11 @@ dic = {}
 cnt = 0
 
 for _ in range(n):
-    cow, pos = input().split()
-    if cow in dic:
-        if dic[cow] != pos:
-            dic[cow] = pos
-            cnt+=1
+    a, b = input().split()
+    if a not in dic:
+        dic[a] = b
     else:
-        dic[cow] = pos
-
+        if dic[a] != b:
+            cnt+=1
+            dic[a] = b
 print(cnt)
