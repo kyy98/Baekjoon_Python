@@ -1,9 +1,9 @@
 n = int(input())
-answer = 0
-length = len(str(n))
+l = len(str(n))
+num = 0
 
-for d in range(1, length):
-    answer+=9*(10**(d-1))*d
+for i in range(l-1):
+    num+=(i+1)*(9*(10**i))
 
-answer+=(n-(10**(length-1))+1)*length
-print(answer)
+num+=l*(n-10**(l-1)+1)
+print(num)
