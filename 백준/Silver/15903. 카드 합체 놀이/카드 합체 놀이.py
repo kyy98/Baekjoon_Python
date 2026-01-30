@@ -1,10 +1,11 @@
-a,b = map(int, input().split())
-card  = list(map(int,input().split()))
+n, m = map(int, input().split())
 
-for i in range(b):
-    card = sorted(card)
-    cover = card[0] + card[1]
-    card[0] = cover
-    card[1] = cover
+ls = list(map(int, input().split()))
+ls.sort()
 
-print(sum(card))
+for _ in range(m):
+    num = ls[0]+ls[1]
+    ls[0], ls[1] = num, num
+    ls.sort()
+
+print(sum(ls))
