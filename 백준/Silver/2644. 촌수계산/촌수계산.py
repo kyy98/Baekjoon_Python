@@ -1,30 +1,29 @@
 from collections import deque
 
-n = int(input())
-a,b = map(int, input().split())
-m = int(input())
-graph = [[] for _ in range(n+1)]
-
-for _ in range(m):
-    x,y = map(int, input().split())
-    graph[x].append(y)
-    graph[y].append(x)
-
-visited = [0]*(n+1)
-
-def bfs(start, graph, visited):
+def bfs(start, end, graph, visited):
     q = deque([start])
     visited[start] = 1
+
     while q:
         v = q.popleft()
         for i in graph[v]:
-            if visited[i] == 0:
+            if not visited[i]:
                 visited[i] = visited[v]+1
-                if i == b:
-                    return visited[i]-1
-                    break
                 q.append(i)
-    return -1
+    return visited[end]
 
-print(bfs(a,graph,visited))
-    
+n = int(input())
+start, end = map(int, input().split())
+visited = [0]*(n+1)
+graph = [[] for _ in range(n+1)]
+for _ in range(int(input())):
+    a,b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+result = bfs(start,end,graph,visited)
+
+if result == 0:
+    print(-1)
+else:
+    print(result-1)
