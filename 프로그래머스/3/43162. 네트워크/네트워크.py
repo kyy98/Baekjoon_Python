@@ -1,20 +1,21 @@
+from collections import deque
+
 def solution(n, computers):
+    visited = [0]*n
+    
     def bfs(s):
-        q = []
+        q = deque([])
         q.append(s)
-        v[s] = 1
         
         while q:
-            k = q.pop(0)
+            v = q.popleft()
             for i in range(n):
-                if computers[k][i]==1 and v[i] == 0:
+                if computers[v][i] == 1 and not visited[i]:
+                    visited[i] = 1
                     q.append(i)
-                    v[i] = 1
-    
-    v = [0]*n
-    answer = 0
+    cnt = 0  
     for i in range(n):
-        if not v[i]:
+        if not visited[i]:
             bfs(i)
-            answer+=1
-    return answer
+            cnt+=1
+    return cnt
