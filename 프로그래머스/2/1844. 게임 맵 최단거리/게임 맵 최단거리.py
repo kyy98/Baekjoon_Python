@@ -1,22 +1,23 @@
+from collections import deque
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
 def solution(maps):
-    def bfs(si, sj):
-        N = len(maps)
-        M = len(maps[0])
-        q = []
-        v = [[0]*M for _ in range(N)]
-        
-        q.append((si,sj))
-        v[si][sj]=1
-        
-        while q:
-            ci, cj = q.pop(0)
-            if (ci,cj) == (N-1,M-1):
-                return v[N-1][M-1]
-            
-            for di, dj in ((-1,0),(0,-1),(1,0),(0,1)):
-                ni, nj = ci+di, cj+dj
-                if 0<=ni<N and 0<=nj<M and maps[ni][nj]==1 and v[ni][nj]==0:
-                    q.append((ni,nj))
-                    v[ni][nj]=v[ci][cj]+1
+    n = len(maps)
+    m = len(maps[0])
+    q = deque([])
+    q.append((0,0))
+    while q:
+        x,y  =q.popleft()
+        for i in range(4):
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if nx<0 or nx>=n or ny<0 or ny>=m:
+                continue
+            if maps[nx][ny] == 1:
+                maps[nx][ny] = maps[x][y]+1
+                q.append((nx,ny))
+    if maps[n-1][m-1] == 1:
         return -1
-    return bfs(0,0)
+    else:
+        return maps[n-1][m-1]
