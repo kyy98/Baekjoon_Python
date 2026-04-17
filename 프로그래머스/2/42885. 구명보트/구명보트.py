@@ -1,16 +1,16 @@
 # 투포인터
 def solution(people, limit):
     people.sort()
-    cnt = 0
     start = 0
     end = len(people)-1
     
-    while start <= end:
-        if people[start]+people[end] <= limit:
+    cnt = 0
+    while start<end:
+        sum = people[start]+people[end]
+        if sum <= limit:
+            cnt+=1
             start+=1
-        
-        cnt+=1
         end-=1
-
-    return cnt
+    
+    return cnt+(len(people)-2*cnt)
         
