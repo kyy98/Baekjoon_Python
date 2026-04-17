@@ -3,14 +3,13 @@
 # # 정렬
 
 def solution(n, lost, reserve):
-    reserve_del = set(reserve)-set(lost)
-    lost_del = set(lost)-set(reserve)
+    r_s = set(reserve)-set(lost)
+    l_s = set(lost)-set(reserve)
     
-    for i in reserve_del:
-        if i-1 in lost_del:
-            lost_del.remove(i-1)
-        elif i+1 in lost_del:
-            lost_del.remove(i+1)
-    
-    return n-len(lost_del)
-        
+    for i in r_s:
+        if i-1 in l_s:
+            l_s.remove(i-1)
+        elif i+1 in l_s:
+            l_s.remove(i+1)
+    return n-(len(l_s))
+   
