@@ -1,11 +1,16 @@
 def solution(s):
-    stack = []
-    for ch in s:
-        if ch == '(':
-            stack.append(ch)
-        else:
-            if not stack:
-                return False
+    stack = [s[0]]
+    if len(s) == 1:
+        return False
+    else:
+        for char in s[1:]:
+            if char == '(':
+                stack.append(char)
             else:
-                stack.pop()
-    return len(stack)==0
+                if not stack:
+                    return False
+                else:
+                    stack.pop()
+        return len(stack) == 0
+    
+  
