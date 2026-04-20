@@ -1,17 +1,25 @@
 from itertools import permutations
 
 def solution(numbers):
-    nums = list(numbers)
-    all_nums = set()
-    
+    nums = []
+    for i in numbers:
+        nums.append(i)
+    per = []
     for i in range(1, len(nums)+1):
         for p in permutations(nums, i):
-            all_nums.add(int(''.join(p)))
+            per.append(''.join(p))
             
-    primes = []
-    for n in all_nums:
-        if n>1 and all(n%i!=0 for i in range(2, int(n**0.5)+1)):
-            primes.append(n)
-    return len(primes)
+    per_2 = list(set(list(map(int,per))))
+    cnt = len(per_2)
+    for i in per_2:
+        if i<2:
+            cnt-=1
+        for j in range(2, int(i**0.5)+1):
+            if i%j == 0:
+                cnt-=1
+                break
+    return cnt
+            
+        
         
     
