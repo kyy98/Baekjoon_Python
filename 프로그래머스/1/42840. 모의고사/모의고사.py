@@ -3,17 +3,22 @@ def solution(answers):
     s2 = [2,1,2,3,2,4,2,5]
     s3 = [3,3,1,1,2,2,4,4,5,5]
     
-    ls = [0,0,0]
-    for i in range(len(answers)):
-        if answers[i] == s1[i%(len(s1))]:
-            ls[0]+=1
-        if answers[i] == s2[i%(len(s2))]:
-            ls[1]+=1
-        if answers[i] == s3[i%(len(s3))]:
-            ls[2]+=1
-    ls_2 = []
-    for num in enumerate(ls):
-        if num[1] == max(ls):
-            ls_2.append(num[0]+1)
-    return ls_2
+    cnt_1 = 0
+    cnt_2 = 0
+    cnt_3 = 0
     
+    for i in range(len(answers)):
+        if answers[i] == s1[i%len(s1)]:
+            cnt_1+=1
+        if answers[i] == s2[i%len(s2)]:
+            cnt_2+=1
+        if answers[i] == s3[i%len(s3)]:
+            cnt_3+=1
+    ans_1 = [cnt_1,cnt_2,cnt_3]
+    ans_1.sort(reverse=True)
+    ans = []
+    ans_2 = [(1,cnt_1), (2,cnt_2), (3,cnt_3)]
+    for a in ans_2:
+        if a[1] == ans_1[0]:
+            ans.append(a[0])
+    return ans
