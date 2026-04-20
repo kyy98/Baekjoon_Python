@@ -1,8 +1,10 @@
 def solution(array, commands):
-    answer = []
+    ans = []
     for c in commands:
-        array_2 = array[c[0]-1:c[1]]
-        array_3 = sorted(array_2)
-        idx = array_3[c[2]-1]
-        answer.append(idx)
-    return answer
+        i = c[0]
+        j = c[1]
+        k = c[2]
+        array_2 = array[i-1:j]
+        array_2.sort()
+        ans.append(array_2[k-1])
+    return ans
