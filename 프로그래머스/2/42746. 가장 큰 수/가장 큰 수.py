@@ -1,12 +1,17 @@
+from functools import cmp_to_key
+
 def solution(numbers):
-    answer = ''
-    ls = []
-    for n in numbers:
-        ls.append(str(n))
-    ls.sort(key = lambda x: x*3, reverse=True)
-    if ls[0] == '0':
-        answer+='0'
-    else:
-        for i in ls:
-            answer += i
-    return answer
+    nums = list(map(str, numbers))
+    
+    def compare(a, b):
+        if a + b > b + a:
+            return -1
+        elif a + b < b + a:
+            return 1
+        else:
+            return 0
+    
+    nums.sort(key=cmp_to_key(compare))
+    
+    answer = ''.join(nums)
+    return '0' if answer[0] == '0' else answer
